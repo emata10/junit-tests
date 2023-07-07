@@ -35,4 +35,18 @@ public class Student {
         }
         return sum / this.grades.size() ;
     }
+
+    public void updateGrade(int index, int newGrade) {
+        if (index >= 0 && index < grades.size()) {
+        } else {
+            throw new IndexOutOfBoundsException("Invalid grade index");
+        }
+    }
+
+    public void deleteGrade(int index) {
+        if (index >= 0 && index < grades.size()) {
+        } else {
+            throw new IndexOutOfBoundsException("Invalid grade index");
+        }
+    }
 }
