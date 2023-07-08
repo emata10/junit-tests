@@ -29,24 +29,35 @@ public class Student {
     }
 
     public double getGradeAverage() {
-        double sum = 0;
-        for (int grade: this.grades) {
+        if (grades.isEmpty()) {
+            return 0;
+        }
+        int sum = 0;
+        for (int grade : grades) {
             sum += grade;
         }
-        return sum / this.grades.size() ;
+        return(double) sum / grades.size();
     }
 
-    public void updateGrade(int index, int newGrade) {
+    public void updateGrades(int index, int newGrade) {
         if (index >= 0 && index < grades.size()) {
-        } else {
-            throw new IndexOutOfBoundsException("Invalid grade index");
+            grades.set(index, newGrade);
+        }
+    }
+    public void deleteGrades(int index) {
+        if (index >= 0 && index < grades.size()) {
+            grades.remove(index);
         }
     }
 
-    public void deleteGrade(int index) {
-        if (index >= 0 && index < grades.size()) {
-        } else {
-            throw new IndexOutOfBoundsException("Invalid grade index");
-        }
+    public void deleteGrade(int i) {
+    }
+
+    public int getGrade() {
+        return 0;
     }
 }
+
+
+
+

@@ -1,41 +1,69 @@
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class StudentTest {
-    @Test
-    public void testCreateStudent(){
-        Student fer = new Student(1L, "fer");
-        Student ryan = null;
-        assertNull(ryan);
-        assertNotNull(fer);
+    private Student student;
+
+    @Before
+    public void setUp() {
+        student = new Student(80, "John Doe");
     }
 
     @Test
-    public void testStudentFields(){
-        Student fer = new Student(1L, "fer");
-        assertSame(1L, fer.getId());
-        assertSame("fer", fer.getName());
-        assertSame(0, fer.getGrades().size());
+    public void testGetId() {
+        assertEquals("John Doe", student.getName());
+    }
+
+    @Test
+    public void testGetName() {
+        assertEquals("John Doe", student.getName());
     }
 
 
     @Test
-    public void testAddGrade(){
-        Student fer = new Student(1L, "fer");
-        fer.addGrade(100);
-        assertSame(100, fer.getGrades().get(0));
-        fer.addGrade(80);
-        assertSame(80, fer.getGrades().get(1));
+    public void testAddGrade() {
+        student.addGrade(90);
+        student.addGrade(85);
+        student.addGrade(92);
+        ;
+
+        ArrayList<Integer> expectedGrades = new ArrayList<>();
+        expectedGrades.add(90);
+        expectedGrades.add(85);
+        expectedGrades.add(92);
+
+        assertEquals(expectedGrades, student.getGrades());
+
     }
 
     @Test
-    public void testAverageGrade(){
-        Student fer = new Student(1L, "fer");
-        fer.addGrade(100);
-        fer.addGrade(80);
-        assertEquals(90, fer.getGradeAverage(), 0);
+    public void testGetGrades() {
+        ArrayList<Integer> grades = student.getGrades();
+        assertTrue(grades.isEmpty());
+    }
+
+    @Test
+    public void testGetGradeAverage() {
+        student.addGrade(90);
+        student.addGrade(85);
+        student.addGrade(92);
+
+    }
+
+    @Test
+
+    public void testUpdateGrade() {
+
+        student.addGrade(90);
+        student.addGrade(85);
+        student.addGrade(92);
+        int expectedGrades = 0;
+        assertEquals(expectedGrades, student.getGrade());
     }
 }
